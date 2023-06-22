@@ -1,0 +1,19 @@
+version: '3.3'
+ 
+services:
+ 
+  database:
+    container_name: 'database-test'
+    image: 'postgres:13-alpine'
+    environment:
+     - POSTGRES_USER=root
+     - POSTGRES_PASSWORD=123456
+     - POSTGRES_DB=test123
+    volumes:
+     - vol_api:/var/lib/postgresql/data
+    ports:
+      - "25432:5432"
+  
+volumes:
+  vol_api: 
+   driver: local

@@ -1,0 +1,75 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using TesteVagaDevPleno.Modules.CategoryModule.Dtos;
+using TesteVagaDevPleno.Modules.CategoryModule.Repository.contract;
+using TesteVagaDevPleno.Modules.CategoryModule.Services;
+using TesteVagaDevPleno.Modules.ProductModule.Repository.contract;
+
+namespace TesteVagaDevPleno.Controllers
+{
+
+    [Route("category")]
+    [ApiController]
+    public class CategoryController : ControllerBase
+    {
+
+        private readonly CreateCategoryService _createCategoryService;  
+        private readonly FindAllCategoryService _findAllCategoryService;
+        private readonly FindOneCategoryService _findOneCategoryService;
+        private readonly UpdateCategoryService _updateCategoryService;
+        private readonly DeleteCategoryService _deleteCategoryService;
+
+        public CategoryController(
+              ProductRepository _productRepository,
+              CategoryRepository _categoryRepository
+            )
+        {
+            _updateCategoryService = new UpdateCategoryService(_categoryRepository);
+            _createCategoryService = new CreateCategoryService(_categoryRepository);
+            _findAllCategoryService = new FindAllCategoryService(_categoryRepository);
+            _findOneCategoryService = new FindOneCategoryService(_categoryRepository);
+            _deleteCategoryService = new DeleteCategoryService(_categoryRepository);
+
+
+        }
+
+
+        [HttpPost("")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Create(ICreateCategoryDTO createCategoryDTO) 
+        {
+
+            try {
+
+                await _createCategoryService.execute(createCategoryDTO);
+
+
+                return Created("created category success", createCategoryDTO);
+               
+            }catch (Exception ex) { 
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+        [HttpGet("")]
+        [AllowAnonymous]
+        public async Task<IActionResult> FindAll(IQueryCategoryRequest query)
+        {
+
+            try
+            {
+
+
+                return Ok(query);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+    }
+}
