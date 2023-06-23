@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using TesteVagaDevPleno.Modules.CategoryModule.Repository.contract;
 using TesteVagaDevPleno.Modules.ProductModule.Dtos;
 using TesteVagaDevPleno.Modules.ProductModule.Entity;
 using TesteVagaDevPleno.Modules.ProductModule.Repository.contract;
@@ -20,14 +21,19 @@ namespace TesteVagaDevPleno.Controllers
         private readonly FindAllProductService _findAllProductService;
         private readonly FindOneProductService _findOneProductService;
         private readonly DeleteProductService _deleteProductService;
+        private readonly UpdateProductService _updateProductService;
 
 
-        public ProductController(ProductRepository _productRepository)
+        public ProductController(
+            ProductRepository _productRepository,
+            CategoryRepository _categoryRepository
+            )
         {
             _createService = new CreateProductService(_productRepository);
             _findAllProductService = new FindAllProductService(_productRepository);
             _findOneProductService = new FindOneProductService(_productRepository);
             _deleteProductService = new DeleteProductService(_productRepository);
+            _updateProductService = new UpdateProductService(_productRepository, _categoryRepository);
         }
 
         [HttpPost("")]
@@ -87,6 +93,24 @@ namespace TesteVagaDevPleno.Controllers
             try
             {
                 await _deleteProductService.Execute(id);
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpPut("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Update(string id, IUpdateProductDTO updateProductDTO)
+        {
+            try
+            {
+                await _updateProductService.Execute(id, updateProductDTO);
 
                 return Ok();
 

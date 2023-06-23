@@ -69,12 +69,12 @@ namespace TesteVagaDevPleno.Modules.ProductModule.Repository.implementations
                         category = p.category
                     })
                .Where(p => p.id == id)
-               .FirstAsync();
+               .FirstOrDefaultAsync();
         }
 
         public override async Task Update(Product product)
         {
-            _context.Remove(product);
+            _context.Update(product);
             await _context.SaveChangesAsync();
         }
     }

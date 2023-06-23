@@ -19,7 +19,7 @@ namespace TesteVagaDevPleno.Modules.ProductModule.Services
             var findOne = await _productRepository.FindOne(id); 
             if (findOne == null)
             {
-                throw new ErrorException("Category  not found", 404);
+                throw new ErrorException("Product  not found", 404);
             }
             return findOne;
         }
