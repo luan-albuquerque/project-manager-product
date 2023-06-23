@@ -28,6 +28,12 @@ namespace TesteVagaDevPleno.Modules.ProductModule.Repository.implementations
             _context.SaveChanges();
         }
 
+        public override async Task Delete(Product product)
+        {
+            _context.Remove(product);
+            await _context.SaveChangesAsync();
+        }
+
         public override async Task<List<Product>> FindAll(IQueryProductRequest? query)
         {
 
@@ -64,6 +70,12 @@ namespace TesteVagaDevPleno.Modules.ProductModule.Repository.implementations
                     })
                .Where(p => p.id == id)
                .FirstAsync();
+        }
+
+        public override async Task Update(Product product)
+        {
+            _context.Remove(product);
+            await _context.SaveChangesAsync();
         }
     }
 }

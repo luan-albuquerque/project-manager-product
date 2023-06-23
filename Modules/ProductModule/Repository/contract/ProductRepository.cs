@@ -9,6 +9,8 @@ namespace TesteVagaDevPleno.Modules.ProductModule.Repository.contract
         public abstract Task Create(ICreateProductDTO createProductDTO);
         public abstract Task<List<Product>> FindAll(IQueryProductRequest? query);
         public abstract Task<Product> FindOne(string id);
+        public abstract Task Update(Product product);
+        public abstract Task Delete(Product product);
 
     }
 }
