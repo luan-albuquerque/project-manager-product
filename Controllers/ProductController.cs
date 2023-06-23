@@ -18,12 +18,14 @@ namespace TesteVagaDevPleno.Controllers
         // Service
         private readonly CreateProductService _createService;
         private readonly FindAllProductService _findAllProductService;
+        private readonly FindOneProductService _findOneProductService;
 
 
         public ProductController(ProductRepository _productRepository)
         {
             _createService = new CreateProductService(_productRepository);
             _findAllProductService = new FindAllProductService(_productRepository);
+            _findOneProductService = new FindOneProductService(_productRepository); 
         }
 
         [HttpPost("")]
@@ -42,9 +44,9 @@ namespace TesteVagaDevPleno.Controllers
 
         }
 
-        [HttpGet("")]
+        [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> FindAll(IQueryProductRequest query)
+        public async Task<IActionResult> FindAll([FromQuery] IQueryProductRequest query)
         {
             try
             {
@@ -56,6 +58,23 @@ namespace TesteVagaDevPleno.Controllers
             {
                 return BadRequest(ex.Message);
              }    
+
+        }
+
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> FindOne(string id)
+        {
+            try
+            {
+
+                return Ok(await _findOneProductService.Execute(id));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
     }

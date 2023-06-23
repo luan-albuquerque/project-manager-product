@@ -12,17 +12,13 @@ namespace TesteVagaDevPleno.Modules.CategoryModule.Entity
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string id { get; private set; } = null!;
+        public string id { get;  set; }
  
         [Required]
         [MaxLength(150)]
-        public string description { get; private set; }
+        public string description { get;  set; }
 
-        public Category(string description)
-        {
-            this.description = description;
-        }
-
+    
 
 
     }

@@ -3,6 +3,7 @@ using TesteVagaDevPleno.Infra;
 using TesteVagaDevPleno.Modules.CategoryModule.Dtos;
 using TesteVagaDevPleno.Modules.CategoryModule.Entity;
 using TesteVagaDevPleno.Modules.CategoryModule.Repository.contract;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace TesteVagaDevPleno.Modules.CategoryModule.Repository.implementations
 {
@@ -13,9 +14,9 @@ namespace TesteVagaDevPleno.Modules.CategoryModule.Repository.implementations
         public override async Task Create(ICreateCategoryDTO createCategoryDTO)
         {
 
-            await _context.Categories.AddAsync(new Category(
-                     createCategoryDTO.description
-                ));
+            await _context.Categories.AddAsync(new Category {
+                    description = createCategoryDTO.description
+                });
            await _context.SaveChangesAsync();
         }
 
@@ -28,5 +29,26 @@ namespace TesteVagaDevPleno.Modules.CategoryModule.Repository.implementations
                 .ToListAsync();
               
         }
+
+        public override async Task<Category> FinOne(string id)
+        {
+            return await _context.Categories
+               .Where(c => c.id == id )
+               .FirstOrDefaultAsync();
+        }
+
+        public override async Task Update(string id, IUpdateCategoryDTO updateCategoryDTO)
+        {
+               _context.Categories
+              .Update(
+                new Category
+                {
+                    id = id,
+                    description = updateCategoryDTO.description
+                });
+                _context.SaveChanges();
+        }
+
+
     }
 }

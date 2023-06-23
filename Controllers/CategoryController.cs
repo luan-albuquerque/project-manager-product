@@ -53,16 +53,56 @@ namespace TesteVagaDevPleno.Controllers
         }
 
 
-        [HttpGet("")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
-        public async Task<IActionResult> FindAll(IQueryCategoryRequest query)
+        public async Task<IActionResult> FindOne(string id)
         {
 
             try
             {
 
 
-                return Ok(query);
+
+                return Ok(await _findOneCategoryService.Execute(id));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> FindAll([FromQuery] IQueryCategoryRequest query)
+        {
+
+            try
+            {
+
+                
+                return Ok(await _findAllCategoryService.Execute(query));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpPut("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Update(string id, IUpdateCategoryDTO updateCategoryDTO)
+        {
+
+            try
+            {
+                await _updateCategoryService.Execute(id, updateCategoryDTO);
+
+                return Ok();
 
             }
             catch (Exception ex)

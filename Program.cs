@@ -12,8 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<ProductRepository, ProductRepositoryInEntity>();
-builder.Services.AddTransient<CategoryRepository, CategoryRepositoryInEntity>();
+builder.Services.AddScoped<ProductRepository, ProductRepositoryInEntity>();
+builder.Services.AddScoped<CategoryRepository, CategoryRepositoryInEntity>();
 
 var app = builder.Build();
 

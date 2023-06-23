@@ -10,30 +10,22 @@ namespace TesteVagaDevPleno.Modules.ProductModule.Entity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string id { get; private set; }
+        public string id { get;  set; }
         [Required]
         [MaxLength(150)]
-        public string name { get; private set; }
+        public string name { get;  set; }
 
         [Required]
         [MaxLength(150)]
-        public string description { get; private set; }
+        public string description { get;  set; }
 
         [Required]
-        public float price_product { get; private set; }
+        public float price_product { get;  set; }
 
-        [Required]
-        public string categoryid { get; private set; }
+        public string categoryid { get;  set; }
         
-        public Category? category { get; private set; } = null;
+        public Category? category { get;  set; } = null;
 
-        public Product( string name, string description, float price_product, string categoryid)
-        {
-            this.name = name;
-            this.description = description;
-            this.price_product = price_product;
-            this.categoryid = categoryid;   
-        }
 
 
 
