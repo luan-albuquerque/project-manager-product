@@ -24,8 +24,8 @@ namespace TesteVagaDevPleno.Modules.CategoryModule.Services
             {
                 throw new ErrorException("Category  not found", 404);
             }
-            
-            await _categoryRepository.Update(id, updateCategoryDTO);
+            findOne.description = updateCategoryDTO.description;
+            await _categoryRepository.Update(findOne);
 
         }
 

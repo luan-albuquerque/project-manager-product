@@ -37,16 +37,11 @@ namespace TesteVagaDevPleno.Modules.CategoryModule.Repository.implementations
                .FirstOrDefaultAsync();
         }
 
-        public override async Task Update(string id, IUpdateCategoryDTO updateCategoryDTO)
+        public override async Task Update(Category category)
         {
                _context.Categories
-              .Update(
-                new Category
-                {
-                    id = id,
-                    description = updateCategoryDTO.description
-                });
-                _context.SaveChanges();
+              .Update(category);
+               await _context.SaveChangesAsync();
         }
 
 
