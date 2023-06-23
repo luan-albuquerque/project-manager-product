@@ -111,5 +111,24 @@ namespace TesteVagaDevPleno.Controllers
             }
 
         }
+
+        [HttpDelete("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Remove(string id)
+        {
+
+            try
+            {
+                await _deleteCategoryService.Execute(id);
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }

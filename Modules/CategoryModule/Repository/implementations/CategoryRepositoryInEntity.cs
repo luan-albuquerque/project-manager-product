@@ -37,6 +37,12 @@ namespace TesteVagaDevPleno.Modules.CategoryModule.Repository.implementations
                .FirstOrDefaultAsync();
         }
 
+        public override async Task Remove(Category category)
+        {
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
+        }
+
         public override async Task Update(Category category)
         {
                _context.Categories
