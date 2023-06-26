@@ -10,6 +10,7 @@ namespace TesteVagaDevPleno.Controllers
 
     [Route("category")]
     [ApiController]
+    [Authorize]
     public class CategoryController : ControllerBase
     {
 
@@ -35,7 +36,6 @@ namespace TesteVagaDevPleno.Controllers
 
 
         [HttpPost("")]
-        [AllowAnonymous]
         public async Task<IActionResult> Create(ICreateCategoryDTO createCategoryDTO) 
         {
 
@@ -54,7 +54,7 @@ namespace TesteVagaDevPleno.Controllers
 
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+      
         public async Task<IActionResult> FindOne(string id)
         {
 
@@ -75,7 +75,6 @@ namespace TesteVagaDevPleno.Controllers
 
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> FindAll([FromQuery] IQueryCategoryRequest query)
         {
 
@@ -94,7 +93,7 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpPut("{id}")]
-        [AllowAnonymous]
+
         public async Task<IActionResult> Update(string id, IUpdateCategoryDTO updateCategoryDTO)
         {
 
@@ -113,7 +112,7 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpDelete("{id}")]
-        [AllowAnonymous]
+  
         public async Task<IActionResult> Remove(string id)
         {
 

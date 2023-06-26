@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.7">
@@ -19,9 +21,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.31.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.31.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,11 +34,9 @@
     <Folder Include="Modules\UserModule\Repository\contract\" />
     <Folder Include="Modules\UserModule\Repository\implementations\" />
     <Folder Include="Modules\UserModule\Services\" />
-    <Folder Include="Modules\AuthModule\Dtos\" />
     <Folder Include="Modules\AuthModule\Entity\" />
     <Folder Include="Modules\AuthModule\Repository\contract\" />
     <Folder Include="Modules\AuthModule\Repository\implementations\" />
-    <Folder Include="Modules\AuthModule\Services\" />
   </ItemGroup>
 
 </Project>

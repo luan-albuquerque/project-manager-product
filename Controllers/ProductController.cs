@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using TesteVagaDevPleno.Modules.CategoryModule.Repository.contract;
 using TesteVagaDevPleno.Modules.ProductModule.Dtos;
-using TesteVagaDevPleno.Modules.ProductModule.Entity;
 using TesteVagaDevPleno.Modules.ProductModule.Repository.contract;
 using TesteVagaDevPleno.Modules.ProductModule.Services;
 
@@ -12,6 +10,7 @@ namespace TesteVagaDevPleno.Controllers
 
     [Route("product")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
  
@@ -29,7 +28,7 @@ namespace TesteVagaDevPleno.Controllers
             CategoryRepository _categoryRepository
             )
         {
-            _createService = new CreateProductService(_productRepository);
+            _createService = new CreateProductService(_productRepository, _categoryRepository);
             _findAllProductService = new FindAllProductService(_productRepository);
             _findOneProductService = new FindOneProductService(_productRepository);
             _deleteProductService = new DeleteProductService(_productRepository);
@@ -37,7 +36,6 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpPost("")]
-        [AllowAnonymous]
         public async Task<IActionResult> Create(ICreateProductDTO createProductDTO)
         {
             try {
@@ -53,7 +51,6 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> FindAll([FromQuery] IQueryProductRequest query)
         {
             try
@@ -70,7 +67,6 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> FindOne(string id)
         {
             try
@@ -87,7 +83,6 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpDelete("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Remove(string id)
         {
             try
@@ -105,7 +100,6 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpPut("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Update(string id, IUpdateProductDTO updateProductDTO)
         {
             try
