@@ -8,7 +8,7 @@ namespace TesteVagaDevPleno.Controllers
 {
 
     [Route("auth")]
-    [ApiController()]
+    [ApiController]
     public class AuthController :  ControllerBase
     {
         AuthService _authService;
