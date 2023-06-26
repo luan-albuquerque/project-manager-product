@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using TesteVagaDevPleno.Modules.AuthModule.Dtos;
 using TesteVagaDevPleno.Modules.AuthModule.Services;
 using TesteVagaDevPleno.Modules.UserModule.Repository.contract;
@@ -21,8 +22,9 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpPost("")]
+        [SwaggerOperation(Summary = "Autenticação de Usuário", Description = "EndPoint para realização de autenticação de usuario - Para testes use > email: bugas@gmail.com password: bugas123")]
         [AllowAnonymous]
-        
+        [ProducesResponseType(typeof(ILoginResponse), StatusCodes.Status200OK)]
         public async Task<IActionResult> Auth(IAuthDTO authDTO)
         {
             try

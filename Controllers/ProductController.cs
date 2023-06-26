@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using TesteVagaDevPleno.Modules.CategoryModule.Repository.contract;
 using TesteVagaDevPleno.Modules.ProductModule.Dtos;
 using TesteVagaDevPleno.Modules.ProductModule.Repository.contract;
 using TesteVagaDevPleno.Modules.ProductModule.Services;
+using TesteVagaDevPleno.Modules.UserModule.Entity;
 
 namespace TesteVagaDevPleno.Controllers
 {
@@ -36,6 +38,8 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpPost("")]
+        [SwaggerOperation(Summary = "Criação de produto", Description = "EndPoint para criar produto")]
+        [ProducesResponseType(typeof(ICreateProductDTO), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create(ICreateProductDTO createProductDTO)
         {
             try {
@@ -51,6 +55,9 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "Listar todos os produtos", Description = "EndPoint para listar todos os produtos")]
+        [ProducesResponseType(typeof(User[]), StatusCodes.Status200OK)]
+
         public async Task<IActionResult> FindAll([FromQuery] IQueryProductRequest query)
         {
             try
@@ -67,6 +74,8 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Buscar produto", Description = "EndPoint para buscar produto especifica pelo identificador")]
+        [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         public async Task<IActionResult> FindOne(string id)
         {
             try
@@ -83,6 +92,9 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Deletar produto pelo identificador", Description = "EndPoint para deletar produto pelo identificador")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+
         public async Task<IActionResult> Remove(string id)
         {
             try
@@ -100,6 +112,9 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        [SwaggerOperation(Summary = "Atualizar produto pelo identificador", Description = "EndPoint para atualizar produto pelo identificador")]
+
         public async Task<IActionResult> Update(string id, IUpdateProductDTO updateProductDTO)
         {
             try

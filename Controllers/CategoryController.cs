@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using TesteVagaDevPleno.Modules.AuthModule.Dtos;
 using TesteVagaDevPleno.Modules.CategoryModule.Dtos;
 using TesteVagaDevPleno.Modules.CategoryModule.Repository.contract;
 using TesteVagaDevPleno.Modules.CategoryModule.Services;
 using TesteVagaDevPleno.Modules.ProductModule.Repository.contract;
+using TesteVagaDevPleno.Modules.UserModule.Entity;
 
 namespace TesteVagaDevPleno.Controllers
 {
@@ -36,6 +39,8 @@ namespace TesteVagaDevPleno.Controllers
 
 
         [HttpPost("")]
+        [SwaggerOperation(Summary = "Criação de Categoria", Description = "EndPoint para criar categorias")]
+        [ProducesResponseType(typeof(ICreateCategoryDTO), StatusCodes.Status200OK)]
         public async Task<IActionResult> Create(ICreateCategoryDTO createCategoryDTO) 
         {
 
@@ -54,7 +59,9 @@ namespace TesteVagaDevPleno.Controllers
 
 
         [HttpGet("{id}")]
-      
+        [SwaggerOperation(Summary = "Buscar Categoria", Description = "EndPoint para buscar uma categoria especifica")]
+        [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+
         public async Task<IActionResult> FindOne(string id)
         {
 
@@ -75,6 +82,9 @@ namespace TesteVagaDevPleno.Controllers
 
 
         [HttpGet]
+        [SwaggerOperation(Summary = "Listar todas as categorias", Description = "EndPoint para listar todas as categorias cadastradas")]
+
+        [ProducesResponseType(typeof(User[]), StatusCodes.Status200OK)]
         public async Task<IActionResult> FindAll([FromQuery] IQueryCategoryRequest query)
         {
 
@@ -93,7 +103,8 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpPut("{id}")]
-
+        [SwaggerOperation(Summary = "Atualizar Categoria", Description = "EndPoint para atualizar uma categoria pelo identificador")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task<IActionResult> Update(string id, IUpdateCategoryDTO updateCategoryDTO)
         {
 
@@ -112,7 +123,8 @@ namespace TesteVagaDevPleno.Controllers
         }
 
         [HttpDelete("{id}")]
-  
+        [SwaggerOperation(Summary = "Deletar Categoria", Description = "EndPoint para deletar uma categoria pelo identificador")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         public async Task<IActionResult> Remove(string id)
         {
 

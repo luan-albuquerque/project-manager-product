@@ -51,3 +51,4 @@ C:\Users\henrique.santos\source\repos\TesteVagaDevPleno\TesteVagaDevPleno\bin\De
 C:\Users\henrique.santos\source\repos\TesteVagaDevPleno\TesteVagaDevPleno\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\henrique.santos\source\repos\TesteVagaDevPleno\TesteVagaDevPleno\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\henrique.santos\source\repos\TesteVagaDevPleno\TesteVagaDevPleno\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\henrique.santos\source\repos\TesteVagaDevPleno\TesteVagaDevPleno\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll

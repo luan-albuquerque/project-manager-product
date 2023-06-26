@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pQGZVzr/6wo18Zxe96197RhNMyiGWbYZTj8oW2w0ueo0/IRgkua+Dnlm/bNbzlmhqLfNYyBm3boJajE6ZpjPRQ==",
+  "dgSpecHash": "wHd6MeytnYbeQ2a8QeCMlj1FtgwqZnvDTu1+6vt6r5MWbNtz8xarYkj8GUvHIBE0HPom6DCBoaMbMB/5CdGNLg==",
   "success": true,
   "projectFilePath": "C:\\Users\\henrique.santos\\source\\repos\\TesteVagaDevPleno\\TesteVagaDevPleno\\TesteVagaDevPleno.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,7 @@
     "C:\\Users\\henrique.santos\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512",
     "C:\\Users\\henrique.santos\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.4\\npgsql.entityframeworkcore.postgresql.7.0.4.nupkg.sha512",
     "C:\\Users\\henrique.santos\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\henrique.santos\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.5.0\\swashbuckle.aspnetcore.annotations.6.5.0.nupkg.sha512",
     "C:\\Users\\henrique.santos\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\henrique.santos\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\henrique.santos\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",

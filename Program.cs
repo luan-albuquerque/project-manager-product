@@ -24,6 +24,7 @@ var key = Encoding.ASCII.GetBytes(Settings.Secret);
 
 builder.Services.AddSwaggerGen(options =>
 {
+    options.EnableAnnotations();
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Scheme = "Bearer",
